@@ -17,9 +17,8 @@ const PathsAPiedi = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:3001/api/paths')
+			.get('https://salty-coast-68919.herokuapp.com/api/paths')
 			.then(res => {
-				console.log(res.data)
 				setPathsPiedi(res.data);
 			})
 			.catch(error => console.log(error));

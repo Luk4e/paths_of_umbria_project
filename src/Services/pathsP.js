@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3001/api/paths';
+const baseUrl = 'https://salty-coast-68919.herokuapp.com/api/paths';
 
 const getAll = () => {
   const request =  axios.get(baseUrl);
