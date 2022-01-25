@@ -1,8 +1,7 @@
 import Path from '../Components/Path';
-//import pathsServices from '../Services/pathsP';
+import pathsServices from '../Services/pathsP';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-
+ 
 const PathsAPiedi = () => {
 
 	const [pathsPiedi,setPathsPiedi] = useState([]);
@@ -16,10 +15,10 @@ const PathsAPiedi = () => {
 	}
 
 	useEffect(() => {
-		axios
-			.get('https://salty-coast-68919.herokuapp.com/api/paths')
-			.then(res => {
-				setPathsPiedi(res.data);
+		pathsServices
+			.getAll()
+			.then(paths => {
+				setPathsPiedi(paths);
 			})
 			.catch(error => console.log(error));
 	},[]);
