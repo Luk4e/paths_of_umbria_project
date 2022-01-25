@@ -1,7 +1,7 @@
 import Path from '../Components/Path';
-import pathsServices from '../Services/pathsP';
+//import pathsServices from '../Services/pathsP';
 import { useEffect, useState } from 'react';
-
+import axios from 'axios';
 
 const PathsAPiedi = () => {
 
@@ -16,10 +16,11 @@ const PathsAPiedi = () => {
 	}
 
 	useEffect(() => {
-		pathsServices
-			.getAll()
-			.then(allPaths => {
-				setPathsPiedi(allPaths);
+		axios
+			.get('http://localhost:3001/api/paths')
+			.then(res => {
+				console.log(res.data)
+				setPathsPiedi(res.data);
 			})
 			.catch(error => console.log(error));
 	},[]);
