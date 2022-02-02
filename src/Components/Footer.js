@@ -1,12 +1,16 @@
-export default function Footer(){
+import React from 'react';
 
-	const styleFooter = {
-		height: '50px',
-	}
+const Footer = () => {
 
-	return(
-		<footer style={styleFooter}>
-			<p>Page's footer</p>
-		</footer>
-	);
+  const styleFooter = {
+    height: '50px',
+  };
+
+  return(
+    <footer style={styleFooter}>
+      <p>Page&apos;s footer</p>
+    </footer>
+  );
 };
+
+export default Footer;
