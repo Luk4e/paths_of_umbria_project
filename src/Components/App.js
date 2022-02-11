@@ -5,12 +5,8 @@ import Footer from './Footer';
 
 const App = () => {
 
-  const divStyle = {
-    textAlign: 'center',
-  };
-
   return (
-    <div style={divStyle}>
+    <div className="container">
       <Main />
       <Footer />
     </div>

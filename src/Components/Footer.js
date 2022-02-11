@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Footer = () => {
 
@@ -6,10 +7,18 @@ const Footer = () => {
     height: '50px',
   };
 
+  const Footer = styled.footer`
+    margin-top: 1rem;
+    padding: 1rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  `;
+
   return(
-    <footer style={styleFooter}>
-      <p>Page&apos;s footer</p>
-    </footer>
+    <Footer>
+      <h6>Leggenda difficolta: T-&gt;Turistico E-&gt;Escursionista EE-&gt;Escursionista Esperto</h6>
+    </Footer>
   );
 };
 
