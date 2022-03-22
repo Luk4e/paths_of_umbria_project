@@ -17,7 +17,6 @@ const Footer = () => {
 
   return(
     <Footer>
-      <h6>Leggenda difficolta: T-&gt;Turistico E-&gt;Escursionista EE-&gt;Escursionista Esperto</h6>
     </Footer>
   );
 };

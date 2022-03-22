@@ -13,9 +13,9 @@ const Main = () => {
       <NavbarComp />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/paths_a_piedi/" element={<PathsAPiedi />} />
-        <Route path="/paths_a_piedi/:pathId" element={<SinglePath />} />
+        <Route path="/contatti" element={<Contacts />} />
+        <Route path="/percorsi_a_piedi/" element={<PathsAPiedi />} />
+        <Route path="/percorsi_a_piedi/:pathId" element={<SinglePath />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>

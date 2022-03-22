@@ -1,9 +1,14 @@
 import pathsService from '../Services/paths';
 
-const pathReducer = (state = [], action) => {
+const initialState = {
+  pathsList:[],
+  isLoading:true
+};
+
+const pathReducer = (state = initialState, action) => {
   switch(action.type) {
   case 'INIT_PATHS':
-    return action.data;
+    return { pathsList:action.data, isFetcing:action.isLoading };
   default:
     return state;
   }
@@ -14,7 +19,8 @@ export const initializePaths = () => {
     const paths = await pathsService.getAll();
     dispatch({
       type: 'INIT_PATHS',
-      data: paths
+      data: paths,
+      isLoading:false
     });
   };
 };

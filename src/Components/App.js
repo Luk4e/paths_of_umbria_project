@@ -1,14 +1,12 @@
 import './App.css';
 import React from 'react';
 import Main from './Main';
-import Footer from './Footer';
 
 const App = () => {
 
   return (
-    <div className="container">
+    <div className="container-sm">
       <Main />
-      <Footer />
     </div>
   );
 };
