@@ -9,7 +9,7 @@ import { filterChangeSearchWord, switchlistmapview } from '../reducers/filterRed
 import BigMapView from '../Components/BigMapView';
 import PlaceholderPath from '../Components/PlaceholderPath';
 
-const numberPlaceholderCard = [0,1,2,3,4,5,6];
+const numberPlaceholderCard = [0,1,2];
 
 const PathsAPiedi = () => {
   const [openFilter, setOpenFilter] = useState(false);

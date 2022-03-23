@@ -256,9 +256,70 @@ const SinglePath = () => {
       </div>);
   };
 
+  const loadingScreenEmpty = () => {
+    return(
+      <div style={styleDiv} >
+        <Row style={{ marginBottom: '20px', fontSize: '40px' }}>
+          <Col xs={8} md={10} >
+            <Placeholder animation="glow">
+              <Placeholder xs={12}/>
+            </Placeholder>
+          </Col>
+          <Col xs={2} md={1} style={{ marginRight: '20px', marginLeft: '20px' }}>
+            <Placeholder animation="glow">
+              <Placeholder.Button xs={12} aria-hidden="true" />
+            </Placeholder>
+          </Col>
+        </Row>
+        <Row style={divAlignStyle}>
+          <Col>
+            <Placeholder animation="glow">
+              <Placeholder bg="secondary" xs={8}/>
+            </Placeholder>
+          </Col>
+        </Row>
+        <Row style={divAlignStyle}>
+          <Col>
+            <Placeholder animation="glow">
+              <Placeholder bg="secondary" xs={2}/>
+            </Placeholder>
+          </Col>
+        </Row>
+        <Row style={divAlignStyle}>
+          <Col>
+            <Placeholder animation="glow">
+              <Placeholder bg="secondary" xs={1}/>
+            </Placeholder>
+          </Col>
+        </Row>
+        <Row style={divAlignStyle}>
+          <Col>
+            <Placeholder animation="glow">
+              <Placeholder bg="secondary" xs={2}/>
+            </Placeholder>
+          </Col>
+        </Row>
+        <Row style={divAlignStyle}>
+          <Col>
+            <Placeholder animation="glow">
+              <Placeholder bg="secondary" xs={1}/>
+            </Placeholder>
+          </Col>
+        </Row>
+        <Row style={divAlignStyle}>
+          <Col>
+            <Placeholder animation="glow">
+              <Placeholder bg="secondary" xs={1}/>
+            </Placeholder>
+          </Col>
+        </Row>
+      </div>
+    );
+  };
+
   return (
     <>
-      {specificPath ? renderPath() :loadingScreen()}
+      {specificPath ? renderPath() : loadingScreenEmpty()}
     </>
   );
 };
