@@ -5,8 +5,7 @@ import { IoTimeOutline } from 'react-icons/io5';
 import { BsPinMap } from 'react-icons/bs';
 import { FiMap } from 'react-icons/fi';
 import { TiArrowLoop } from 'react-icons/ti';
-import { BsBarChart } from 'react-icons/bs';
-import { MdHeight } from 'react-icons/md';
+import { BsBarChart, BsArrowUpRight } from 'react-icons/bs';
 
 const PlaceholderPath = () => {
   const [pathBrightness, setPathBrightness] = useState('brightness(100%)');
@@ -85,7 +84,7 @@ const PlaceholderPath = () => {
         </Col>
       </Row>
       <Row style={divAlignStyle}>
-        <Col xs={1}><MdHeight /></Col>
+        <Col xs={1}><BsArrowUpRight /></Col>
         <Col xs={10}>
           <Placeholder animation="glow">
             <Placeholder xs={3} bg="secondary"/>

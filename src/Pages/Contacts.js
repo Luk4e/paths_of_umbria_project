@@ -18,8 +18,9 @@ const Contacts = () => {
 
   return(
     <div style={styleDivHome}>
-      <h1>Contatti</h1>
-      <h5>La sezione contatti è ancora in fase di sviluppo</h5>
+      <h3>Luca Consalvi</h3>
+      <h6>Per info o consigli potete contattarmi a questo indirizzo</h6>
+      <h5>consalvi.luca@gmail.com</h5>
     </div>
   );
 };

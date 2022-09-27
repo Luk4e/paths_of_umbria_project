@@ -2,11 +2,10 @@ import React,{ useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { GiPathDistance } from 'react-icons/gi';
 import { IoTimeOutline } from 'react-icons/io5';
-import { BsPinMap } from 'react-icons/bs';
+import { BsPinMap, BsArrowUpRight } from 'react-icons/bs';
 import { FiMap } from 'react-icons/fi';
 import { TiArrowLoop } from 'react-icons/ti';
 import { BsBarChart } from 'react-icons/bs';
-import { MdHeight } from 'react-icons/md';
 
 const timeCalculation = (seconds) => {
   const days = Math.floor(seconds / (24*3600));
@@ -83,7 +82,7 @@ const Path = ({ title, park_name, starting_point, path_length, average_time, ave
         <Col xs={10}>{timeCalculation(average_time)}</Col>
       </Row>
       { average_drop!==null && (<Row style={divAlignStyle}>
-        <Col xs={1}><MdHeight /></Col>
+        <Col xs={1}><BsArrowUpRight /></Col>
         <Col xs={10}>{ average_drop } m.</Col>
       </Row>) }
       <Row style={divAlignStyle}>

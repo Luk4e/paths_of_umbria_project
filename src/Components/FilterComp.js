@@ -1,18 +1,20 @@
 import React from 'react';
 import {
   filterChangeAltitudeMin,
-  filterChangeDifficult,
   filterChangeAltitudeMax,
   filterChangeLengthMin,
   filterChangeLengthMax,
-  filterChangePark,
   filterChangeLoop,
+  filterChangeParkMultiple,
+  filterChangeDifficultMultiple,
 } from '../reducers/filterReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { FloatingLabel, Form, Button, Row, Col } from 'react-bootstrap';
+import Multiselect from 'multiselect-react-dropdown';
 
 
-const parkList = ['Parco di Colfiorito',
+const parkListMod = [
+  'Parco di Colfiorito',
   'Parco del Monte Cucco',
   'Parco di Monte Peglia e Selva di Meana (S.T.I.N.A)',
   'Parco del Monte Subasio',
@@ -20,12 +22,13 @@ const parkList = ['Parco di Colfiorito',
   'Parco Nazionale dei Monti Sibillini',
   'Parco fluviale del Tevere',
   'Parco fluviale del Nera',
-  'Fuori dai principali parchi'
+  'Fuori dai principali parchi',
+  'Alto Tevere',
 ];
 
 const difficultList = ['T','E','EE','EEA'];
 
-const loopOption = ['Si', 'No'];
+const loopOption = ['Tutti','Si', 'No'];
 
 const FilterComp = () => {
   const dispatch = useDispatch();
@@ -35,44 +38,54 @@ const FilterComp = () => {
     altitude_max,
     length_min,
     length_max,
-    parkName,
-    difficultLevel,
-    loopAllYesNo
+    loopAllYesNo,
+    multipleParkName,
+    multipleDifficultLevel,
   } = useSelector(state => state.filterParams);
 
   const resetFilter = () => {
-    dispatch(filterChangePark('tutti'));
-    dispatch(filterChangeDifficult('qualsiasi'));
+    dispatch(filterChangeDifficultMultiple([]));
+    dispatch(filterChangeParkMultiple([]));
     dispatch(filterChangeLoop('tutti'));
     dispatch(filterChangeAltitudeMin(''));
     dispatch(filterChangeAltitudeMax(''));
     dispatch(filterChangeLengthMin(''));
     dispatch(filterChangeLengthMax(''));
   };
-
+  let inputField = { margin: '5px' };
   return(
     <div style={{ marginBottom: '30px' }}>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col xs={12} md={4}>
-          <FloatingLabel controlId="floatingSelect" className="mt-4" label="Zona">
-            <Form.Select value={parkName} onChange={(event) => dispatch(filterChangePark(event.target.value))} >
-              <option>Tutti</option>
-              {parkList.map( (p,idx) => <option key={idx} value={p}>{p}</option>)}
-            </Form.Select>
-          </FloatingLabel>
+          <Multiselect
+            options={parkListMod}
+            selectedValues={multipleParkName}
+            onSelect={(event) => dispatch(filterChangeParkMultiple(event))}
+            onRemove={(event) => dispatch(filterChangeParkMultiple(event))}
+            placeholder="Zone"
+            showCheckbox={true}
+            isObject={false}
+            hidePlaceholder={true}
+            style={{ multiselectContainer:{ marginBottom:'25px', hight: '20px' } }}
+          />
         </Col>
         <Col xs={12} md={4}>
-          <FloatingLabel controlId="floatingSelect" className="mt-4" label="Difficoltà">
-            <Form.Select value={difficultLevel} onChange={(event) => dispatch(filterChangeDifficult(event.target.value))} >
-              <option>Qualsiasi</option>
-              {difficultList.map( (p,idx) => <option key={idx} value={p}>{p}</option>)}
-            </Form.Select>
-          </FloatingLabel>
+          <Multiselect
+            options={difficultList}
+            selectedValues={multipleDifficultLevel}
+            onSelect={(event) => dispatch(filterChangeDifficultMultiple(event))}
+            onRemove={(event) => dispatch(filterChangeDifficultMultiple(event))}
+            placeholder="Difficoltà"
+            showCheckbox={true}
+            isObject={false}
+            hidePlaceholder={true}
+          />
         </Col>
+      </Row>
+      <Row className="justify-content-md-center" >
         <Col xs={12} md={4}>
           <FloatingLabel controlId="floatingSelect" className="mt-4" label="Anello">
-            <Form.Select value={loopAllYesNo} onChange={(event) => dispatch(filterChangeLoop(event.target.value))} >
-              <option>Tutti</option>
+            <Form.Select size="sm" value={loopAllYesNo} onChange={(event) => dispatch(filterChangeLoop(event.target.value))} >
               {loopOption.map( (p,idx) => <option key={idx} value={p}>{p}</option>)}
             </Form.Select>
           </FloatingLabel>

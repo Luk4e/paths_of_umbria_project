@@ -3,8 +3,8 @@ const stateObj = {
   altitude_max:'',
   length_min: '',
   length_max:'',
-  parkName:'tutti',
-  difficultLevel:'qualsiasi',
+  multipleParkName:[],
+  multipleDifficultLevel:[],
   loopAllYesNo: 'tutti',
   searchWord: '',
   switchmaplist: true,
@@ -32,15 +32,15 @@ const filterReducer = (state = stateObj, action) => {
       ...state,
       length_max:action.length_max
     };
-  case 'CHANGE_SELECTED_PARK':
+  case 'CHANGE_SELECTED_MULTIPLE_PARK':
     return {
       ...state,
-      parkName:action.parkName
+      multipleParkName:action.multipleParkName
     };
-  case 'CHANGE_SELECTED_DIFFICULT':
+  case 'CHANGE_SELECTED_MULTIPLE_DIFFICULT':
     return {
       ...state,
-      difficultLevel:action.difficultLevel
+      multipleDifficultLevel:action.multipleDifficultLevel
     };
   case 'CHANGE_SELECTED_LOOP':
     return {
@@ -74,16 +74,16 @@ export const filterChangeAltitudeMin = altitude_min => {
     altitude_min
   };
 };
-export const filterChangePark = parkName => {
+export const filterChangeParkMultiple = multipleParkName => {
   return {
-    type: 'CHANGE_SELECTED_PARK',
-    parkName
+    type: 'CHANGE_SELECTED_MULTIPLE_PARK',
+    multipleParkName
   };
 };
-export const filterChangeDifficult = difficultLevel => {
+export const filterChangeDifficultMultiple = multipleDifficultLevel => {
   return {
-    type: 'CHANGE_SELECTED_DIFFICULT',
-    difficultLevel
+    type: 'CHANGE_SELECTED_MULTIPLE_DIFFICULT',
+    multipleDifficultLevel
   };
 };
 export const filterChangeLengthMax = length_max => {

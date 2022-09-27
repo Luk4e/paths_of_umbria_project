@@ -6,8 +6,7 @@ import { IoTimeOutline } from 'react-icons/io5';
 import { BsPinMap } from 'react-icons/bs';
 import { FiMap } from 'react-icons/fi';
 import { TiArrowLoop } from 'react-icons/ti';
-import { BsBarChart } from 'react-icons/bs';
-import { MdHeight } from 'react-icons/md';
+import { BsBarChart, BsArrowUpRight } from 'react-icons/bs';
 import { useNavigate, useParams } from 'react-router-dom';
 import pathsService from '../Services/paths';
 import MapComp from '../Components/MapComp';
@@ -72,7 +71,6 @@ const timeCalculation = (seconds) => {
   return resultDays+resultHours+resultMinutes;
 };
 
-
 const SinglePath = () => {
   const [specificPath, setSpecificPath] = useState(null);
   const [open, setOpen] = useState(false);
@@ -80,11 +78,12 @@ const SinglePath = () => {
   const navigate = useNavigate();
 
   const styleDiv = {
-    padding: '5%',
+    padding: '8%',
     width: 'auto',
     height: '100%',
     boxShadow: '0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1)',
-    margin: '6% 5% 3% 5%',
+    marginTop: '30px',
+    marginBottom: '20px',
     background: '#F5F5F5'
   };
 
@@ -98,6 +97,23 @@ const SinglePath = () => {
     const tempPathSpec = await pathsService.getOne(pathId);
     setSpecificPath(tempPathSpec);
   },[pathId]);
+
+  const show_description = () => {
+    return(
+      <>
+        <Row style={{ marginTop: '30px' }} id="description-collapse" >
+          <Col>
+            <h5>
+              {open ? specificPath.description_it : specificPath.description_it.slice(0,150)+'...'}
+            </h5>
+          </Col>
+        </Row>
+        <Button onClick={() => setOpen(!open)} variant='outline-primary' >
+          {open ? ' Comprimi descrizione' : ' Espandi descrizione'}
+        </Button>
+      </>
+    );
+  };
 
   const startingPoint = () => {
     return (specificPath.gpx!=='') ? gpxparsed(specificPath.gpx).tracks[0].points.map(p => [p.lat, p.lon])[5] : specificPath.starting_point;
@@ -114,7 +130,7 @@ const SinglePath = () => {
           <Col style={divAlignStyle} md="auto" xs={2} ><FiMap /></Col><Col md="auto" xs={8}>{specificPath.park_name}</Col>
         </Row>
         <Row style={divAlignStyle}>
-          <Col style={divAlignStyle} md="auto" xs={2} ><BsPinMap/></Col><Col md="auto" xs={8}><a href={'https://maps.google.com?q='+startingPoint()}>{specificPath.starting_point}</a></Col>
+          <Col style={divAlignStyle} md="auto" xs={2} ><BsPinMap/></Col><Col md="auto" xs={8}><a href={'https://maps.google.com?q='+specificPath.starting_point}>{specificPath.starting_point}</a></Col>
         </Row>
         <Row style={divAlignStyle}>
           <Col style={divAlignStyle} md="auto" xs={2} ><GiPathDistance /></Col><Col md="auto" xs={8}>{specificPath.path_length} Km</Col>
@@ -123,7 +139,7 @@ const SinglePath = () => {
           <Col style={divAlignStyle} md="auto" xs={2} ><IoTimeOutline /></Col><Col md="auto" xs={8}>{timeCalculation(specificPath.average_time)}</Col>
         </Row>
         {(specificPath.average_drop!==null)&&<Row style={divAlignStyle}>
-          <Col style={divAlignStyle} md="auto" xs={2} ><MdHeight /></Col><Col md="auto" xs={8}>{specificPath.average_drop} m.</Col>
+          <Col style={divAlignStyle} md="auto" xs={2} ><BsArrowUpRight /></Col><Col md="auto" xs={8}>{specificPath.average_drop} m.</Col>
         </Row>}
         <Row style={divAlignStyle}>
           <Col style={divAlignStyle} md="auto" xs={2} ><BsBarChart /></Col><Col md="auto" xs={8}>{specificPath.difficult}</Col>
@@ -134,16 +150,7 @@ const SinglePath = () => {
         <Row style={{ marginTop: '10px' }}>
           { (specificPath.path_numbers.length>0)&& (<><Col md="auto" xs={4}><h4>Sentieri n. </h4></Col><Col md="auto" xs={6}><h4>{(specificPath.path_numbers.map((pn,idx) => <span key={idx}><Badge bg="danger">{pn}</Badge> </span>))}</h4></Col></>) }
         </Row>
-        <Row style={{ marginTop: '30px' }} id="description-collapse" >
-          <Col>
-            <h5>
-              {open ? specificPath.description_it : specificPath.description_it.slice(0,150)+'...'}
-            </h5>
-          </Col>
-        </Row>
-        <Button onClick={() => setOpen(!open)} variant='outline-primary' >
-          {open ? ' Comprimi descrizione' : ' Espandi descrizione'}
-        </Button>
+        {specificPath.description_it ? show_description() : <Row></Row>}
         {(specificPath.gpx!=='') && <Row style={{ marginTop: '30px' }}><Col><Button variant='outline-info' className="float-start" onClick={() => dowloadGPX(specificPath.title,specificPath.gpx)}>Download GPX</Button></Col></Row>}
         {(specificPath.gpx!=='') && <Row><Col><MapComp mapsPoint={gpxparsed(specificPath.gpx).tracks[0].points.map(p => [p.lat, p.lon])} allgpx={gpxparsed(specificPath.gpx)} /></Col></Row>}
 
@@ -198,7 +205,7 @@ const SinglePath = () => {
           </Col>
         </Row>
         <Row style={divAlignStyle}>
-          <Col style={divAlignStyle} md="auto" xs={2} ><MdHeight /></Col>
+          <Col style={divAlignStyle} md="auto" xs={2} ><BsArrowUpRight /></Col>
           <Col>
             <Placeholder animation="glow">
               <Placeholder bg="secondary" xs={1}/>
@@ -256,70 +263,9 @@ const SinglePath = () => {
       </div>);
   };
 
-  const loadingScreenEmpty = () => {
-    return(
-      <div style={styleDiv} >
-        <Row style={{ marginBottom: '20px', fontSize: '40px' }}>
-          <Col xs={8} md={10} >
-            <Placeholder animation="glow">
-              <Placeholder xs={12}/>
-            </Placeholder>
-          </Col>
-          <Col xs={2} md={1} style={{ marginRight: '20px', marginLeft: '20px' }}>
-            <Placeholder animation="glow">
-              <Placeholder.Button xs={12} aria-hidden="true" />
-            </Placeholder>
-          </Col>
-        </Row>
-        <Row style={divAlignStyle}>
-          <Col>
-            <Placeholder animation="glow">
-              <Placeholder bg="secondary" xs={8}/>
-            </Placeholder>
-          </Col>
-        </Row>
-        <Row style={divAlignStyle}>
-          <Col>
-            <Placeholder animation="glow">
-              <Placeholder bg="secondary" xs={2}/>
-            </Placeholder>
-          </Col>
-        </Row>
-        <Row style={divAlignStyle}>
-          <Col>
-            <Placeholder animation="glow">
-              <Placeholder bg="secondary" xs={1}/>
-            </Placeholder>
-          </Col>
-        </Row>
-        <Row style={divAlignStyle}>
-          <Col>
-            <Placeholder animation="glow">
-              <Placeholder bg="secondary" xs={2}/>
-            </Placeholder>
-          </Col>
-        </Row>
-        <Row style={divAlignStyle}>
-          <Col>
-            <Placeholder animation="glow">
-              <Placeholder bg="secondary" xs={1}/>
-            </Placeholder>
-          </Col>
-        </Row>
-        <Row style={divAlignStyle}>
-          <Col>
-            <Placeholder animation="glow">
-              <Placeholder bg="secondary" xs={1}/>
-            </Placeholder>
-          </Col>
-        </Row>
-      </div>
-    );
-  };
-
   return (
     <>
-      {specificPath ? renderPath() : loadingScreenEmpty()}
+      {specificPath ? renderPath() : loadingScreen()}
     </>
   );
 };

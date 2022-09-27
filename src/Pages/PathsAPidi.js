@@ -20,8 +20,8 @@ const PathsAPiedi = () => {
     altitude_max,
     length_min,
     length_max,
-    parkName,
-    difficultLevel,
+    multipleParkName,
+    multipleDifficultLevel,
     loopAllYesNo,
     searchWord,
     switchmaplist,
@@ -34,22 +34,22 @@ const PathsAPiedi = () => {
   const paths = useSelector(({ paths }) => {
     let result = paths.pathsList;
 
-    if( (parkName).toLowerCase() !== 'tutti') {
-      result = result.filter(path => path.park_name===parkName);
+    if( multipleParkName.length !== 0){
+      result = result.filter(path => multipleParkName.includes(path.park_name));
     }
-    if( (difficultLevel).toLowerCase() !== 'qualsiasi') {
-      result = result.filter(path => path.difficult === difficultLevel);
+    if( multipleDifficultLevel.length !== 0){
+      result = result.filter(path => multipleDifficultLevel.includes(path.difficult));
     }
     if( (loopAllYesNo).toLowerCase() !== 'tutti') {
       result = result.filter(path => path.loop === (loopAllYesNo === 'Si' ? true : false));
     }
     if( (searchWord).toLowerCase() !== '') {
-      result = result.filter(path => path.title.toLowerCase().includes(searchWord));
+      result = result.filter(path => path.title.toLowerCase().includes(searchWord.toLowerCase()));
     }
-    if( (altitude_min) !== ''){
+    if( (altitude_min) !== '') {
       result = result.filter(path => path.average_drop >= altitude_min);
     }
-    if( (altitude_max) !== ''){
+    if( (altitude_max) !== '') {
       result = result.filter(path => path.average_drop <= altitude_max);
     }
     if( (length_max) !== '') {
@@ -64,6 +64,7 @@ const PathsAPiedi = () => {
   );
 
   const stylePathContainer = {
+    marginBottom:'20px',
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
@@ -107,11 +108,11 @@ const PathsAPiedi = () => {
   return (
     <div style={{ marginTop: '20px' }}>
       <Container>
-        <Row style={{ marginBottom:'20px' }}>
+        <Row style={{ marginBottom:'20px',  marginRight: '10px' }}>
           <Col xs={{ span:3, offset:7 }}>
             <ButtonGroup>
-              <ToggleButton onClick={() => dispatch(switchlistmapview(true))}>Lista</ToggleButton>
-              <ToggleButton onClick={() => dispatch(switchlistmapview(false))}>Mappa</ToggleButton>
+              <ToggleButton disabled={switchmaplist} onClick={() => dispatch(switchlistmapview(true))}>Lista</ToggleButton>
+              <ToggleButton disabled={!switchmaplist} onClick={() => dispatch(switchlistmapview(false))}>Mappa</ToggleButton>
             </ButtonGroup>
           </Col>
         </Row>

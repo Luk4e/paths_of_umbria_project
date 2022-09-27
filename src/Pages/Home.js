@@ -5,8 +5,7 @@ import { IoTimeOutline } from 'react-icons/io5';
 import { BsPinMap } from 'react-icons/bs';
 import { FiMap } from 'react-icons/fi';
 import { TiArrowLoop } from 'react-icons/ti';
-import { BsBarChart } from 'react-icons/bs';
-import { MdHeight } from 'react-icons/md';
+import { BsBarChart, BsArrowUpRight } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { initializePaths } from '../reducers/pathReducer';
 
@@ -19,7 +18,8 @@ const parkList = ['Parco di Colfiorito',
   'Parco del Lago Trasimeno',
   'Parco Nazionale dei Monti Sibillini',
   'Parco fluviale del Tevere',
-  'Parco fluviale del Nera'];
+  'Parco fluviale del Nera',
+  'Alto Tevere'];
 
 const Home = () => {
 
@@ -92,7 +92,7 @@ const Home = () => {
           <Col  md="auto"><IoTimeOutline /> Tempo medio percorrenza</Col>
         </Row >
         <Row className="justify-content-md">
-          <Col  md="auto"><MdHeight /> Dislivello positivo</Col>
+          <Col  md="auto"><BsArrowUpRight /> Dislivello positivo</Col>
         </Row>
         <Row className="justify-content-md">
           <Col  md="auto"><BsBarChart /> Difficoltà</Col>

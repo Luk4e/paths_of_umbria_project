@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="%PUBLIC_URL%/logo192path.png">
     <meta name="theme-color" content="#000000" />
+
     <meta
       name="description"
       content="Web site to research trekking paths in Umbria"
     />
+
+    <meta
+      name="description"
+      content="Sito per la ricerca di percorsi da trekking in Umbria. Può essere utilizzato
+      per trovare, in pochi minuti, il percorso più adatto alle proprie esigenze."
+    >
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192path.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -45,7 +53,15 @@
       rel="stylesheet"
       href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"
     />
-    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N17N1BNC2P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N17N1BNC2P');
+    </script>
     <title>Umbriapiedi</title>
   </head>
   <body>

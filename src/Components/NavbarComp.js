@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import logoPath from '../img/logo512path.png';
+import logoPath from '../img/logo512path.webp';
 
 const itLanguage = {
   main:'Progetto',
