@@ -24,7 +24,7 @@ const BigMapView = ({ mapInfoPoint }) => {
 
   const createOneMarker = (infoPath) => {
     return(
-      <Marker icon={hikingIconSVG} key={infoPath.id} position={infoPath.gpx} >
+      <Marker icon={hikingIconSVG} key={infoPath.id} position={infoPath.starting_lat_long} >
         <Popup>
           <Link style={styleLink} to={infoPath.id}>
             <Path

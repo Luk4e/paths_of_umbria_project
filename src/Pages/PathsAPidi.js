@@ -97,7 +97,7 @@ const PathsAPiedi = () => {
           </Link>
         );
       });
-    const mapView = <BigMapView mapInfoPoint={paths.filter(pa => pa.gpx!=='')} />;
+    const mapView = <BigMapView mapInfoPoint={paths.filter(pa => pa.starting_lat_long!==[])} />;
     return switchButton ? <Container style={stylePathContainer}>{cards}</Container> : mapView;
   };
 
