@@ -97,7 +97,7 @@ const PathsAPiedi = () => {
           </Link>
         );
       });
-    const mapView = <BigMapView mapInfoPoint={paths.filter(pa => (Array.isArray(pa.starting_lat_long) && starting_lat_long.length))} />;
+    const mapView = <BigMapView mapInfoPoint={paths.filter(pa => (Array.isArray(pa.starting_lat_long) && p.starting_lat_long.length))} />;
     return switchButton ? <Container style={stylePathContainer}>{cards}</Container> : mapView;
   };
 
