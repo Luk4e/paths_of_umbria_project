@@ -10,6 +10,7 @@ import BigMapView from '../Components/BigMapView';
 import PlaceholderPath from '../Components/PlaceholderPath';
 
 const numberPlaceholderCard = [0,1,2];
+const nameWebApp = 'Umbriapiedi';
 
 const PathsAPiedi = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -106,15 +107,19 @@ const PathsAPiedi = () => {
   },[]);
 
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div style={{ marginTop: '50px' }}>
       <Container>
-        <Row style={{ marginBottom:'20px',  marginRight: '10px' }}>
-          <Col xs={{ span:3, offset:7 }}>
-            <ButtonGroup>
-              <ToggleButton disabled={switchmaplist} onClick={() => dispatch(switchlistmapview(true))}>Lista</ToggleButton>
-              <ToggleButton disabled={!switchmaplist} onClick={() => dispatch(switchlistmapview(false))}>Mappa</ToggleButton>
-            </ButtonGroup>
+        <Row className="justify-content-md-center">
+          <Col xs="12" className="text-center" >
+            <h1>
+              {nameWebApp}
+            </h1>
+            <h5 style={{ marginTop: '30px', marginBottom: '50px' }}>
+                Trova il percorso che più fa per te!
+            </h5>
           </Col>
+        </Row>
+        <Row style={{ marginBottom:'20px',  marginRight: '10px' }}>
         </Row>
         <Row className="justify-content-md-center" style={{ marginBottom:'20px' }}>
           <Col xs={12} md={4} >
@@ -132,6 +137,7 @@ const PathsAPiedi = () => {
             <div className="d-grid gap-2">
               <Button
                 onClick={() => setOpenFilter(!openFilter)}
+                variant='success'
                 aria-controls="filter-collapse"
                 aria-expanded={openFilter}
                 style={{ marginBottom: '20px' }}
@@ -151,8 +157,8 @@ const PathsAPiedi = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={{ span:10, offset:1 }}>
-            <h5>Percorsi trovati: {!isLoading ? <Badge bg="primary" >{paths.length}</Badge> : <Badge bg="primary" >
+          <Col  xs={12}>
+            <h5 style={{ textAlign:'center' }}>{!isLoading ? <Badge bg="success" >{paths.length}</Badge> : <Badge bg="success" >
               <Spinner
                 as="span"
                 animation="grow"
@@ -162,6 +168,12 @@ const PathsAPiedi = () => {
               />
             </Badge>}
             </h5>
+          </Col>
+          <Col xs={{ span:3, offset:6 }} sm={{ span:2, offset:7 }}>
+            <ButtonGroup>
+              <ToggleButton variant='success' disabled={switchmaplist} onClick={() => dispatch(switchlistmapview(true))}>Lista</ToggleButton>
+              <ToggleButton variant='success' disabled={!switchmaplist} onClick={() => dispatch(switchlistmapview(false))}>Mappa</ToggleButton>
+            </ButtonGroup>
           </Col>
         </Row>
       </Container>

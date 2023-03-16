@@ -44,7 +44,7 @@ const PlaceholderPath = () => {
         <Col xs={12}>
           <h2 style={{ fontSize:'22px' }} >
             <Placeholder animation="glow">
-              <Placeholder xs={12} bg="primary" />
+              <Placeholder xs={12} bg="success" />
             </Placeholder>
           </h2>
         </Col>

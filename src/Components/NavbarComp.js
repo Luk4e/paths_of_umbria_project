@@ -4,9 +4,9 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import logoPath from '../img/logo512path.webp';
 
 const itLanguage = {
-  main:'Progetto',
   walkingPath: 'Percorsi',
-  infoContact: 'Contatti'
+  infoContact: 'Contatti',
+  aboutUs: 'About Us'
 };
 
 const NavbarComp = () => {
@@ -21,7 +21,8 @@ const NavbarComp = () => {
   const styleLink = {
     margin: '10px',
     padding: '5px',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    color:'green'
   };
 
   return(
@@ -41,14 +42,11 @@ const NavbarComp = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#" as="span" >
-            <Link style={styleLink} to="/">{itLanguage.main}</Link>
+          <Nav.Link href="#" as="span">
+            <Link style={styleLink} to="/">{itLanguage.walkingPath}</Link>
           </Nav.Link>
           <Nav.Link href="#" as="span" >
-            <Link style={styleLink} to="/percorsi_a_piedi">{itLanguage.walkingPath}</Link>
-          </Nav.Link>
-          <Nav.Link href="#" as="span" >
-            <Link style={styleLink} to="/contatti">{itLanguage.infoContact}</Link>
+            <Link style={styleLink} to="/aboutus">{itLanguage.aboutUs}</Link>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

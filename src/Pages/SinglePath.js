@@ -108,7 +108,7 @@ const SinglePath = () => {
             </h5>
           </Col>
         </Row>
-        <Button onClick={() => setOpen(!open)} variant='outline-primary' >
+        <Button onClick={() => setOpen(!open)} variant='outline-success' >
           {open ? ' Comprimi descrizione' : ' Espandi descrizione'}
         </Button>
       </>
@@ -124,7 +124,7 @@ const SinglePath = () => {
       <div style={styleDiv}>
         <Row style={{ marginBottom: '20px' }}>
           <Col xs={8}><h1>{specificPath.title}</h1></Col>
-          <Col xs={4}><Button variant='outline-primary' className="float-end" onClick={() => navigate('/percorsi_a_piedi')}>Torna</Button></Col>
+          <Col xs={4}><Button variant='outline-success' className="float-end" onClick={() => navigate('/')}>Torna</Button></Col>
         </Row>
         <Row style={divAlignStyle}>
           <Col style={divAlignStyle} md="auto" xs={2} ><FiMap /></Col><Col md="auto" xs={8}>{specificPath.park_name}</Col>
@@ -168,7 +168,7 @@ const SinglePath = () => {
           </Col>
           <Col xs={2} md={1} style={{ marginRight: '20px', marginLeft: '20px' }}>
             <Placeholder animation="glow">
-              <Placeholder.Button xs={12} aria-hidden="true" />
+              <Placeholder.Button xs={12} aria-hidden="true" bg='success'/>
             </Placeholder>
           </Col>
         </Row>
@@ -251,7 +251,7 @@ const SinglePath = () => {
           </Col>
         </Row>
         <Placeholder animation="glow">
-          <Placeholder.Button xs={4} aria-hidden="true" />
+          <Placeholder.Button xs={4} aria-hidden="true" bg='success'/>
         </Placeholder>
         <Row style={{ marginTop: '30px' }}>
           <Col>

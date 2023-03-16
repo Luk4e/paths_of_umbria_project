@@ -129,7 +129,7 @@ const FilterComp = () => {
       </Row>
       <Row className="justify-content-md-end">
         <Col xs="auto" md="auto" >
-          <Button
+          <Button variant='success'
             onClick = {() => resetFilter()}
           >
             Reset

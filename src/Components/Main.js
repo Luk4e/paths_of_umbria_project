@@ -1,21 +1,20 @@
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import React from 'react';
 import NavbarComp from './NavbarComp';
-import Home from '../Pages/Home';
 import Contacts from '../Pages/Contacts';
 import PathsAPiedi from '../Pages/PathsAPidi';
 import NoMatch from '../Pages/NoMatch';
 import SinglePath from '../Pages/SinglePath';
+import About from '../Pages/About';
 
 const Main = () => {
   return(
     <Router>
       <NavbarComp />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contatti" element={<Contacts />} />
-        <Route path="/percorsi_a_piedi/" element={<PathsAPiedi />} />
-        <Route path="/percorsi_a_piedi/:pathId" element={<SinglePath />} />
+        <Route path="/aboutus" element={<About />} />
+        <Route path="/" element={<PathsAPiedi />} />
+        <Route path="/:pathId" element={<SinglePath />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>

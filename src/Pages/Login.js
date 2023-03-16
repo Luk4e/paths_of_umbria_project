@@ -72,7 +72,7 @@ const Login = () => {
             name="password"
             onChange={({ target }) => setPassword(target.value)}
           />
-          <Button variant="primary" type="submit" id='login-button'>login</Button>
+          <Button variant="success" type="submit" id='login-button'>login</Button>
         </Form.Group>
       </Form>
     </div>
