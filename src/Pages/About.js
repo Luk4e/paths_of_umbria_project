@@ -24,7 +24,7 @@ const About = () => {
         trovare in poco tempo un percorso da effettuare nelle belle giornate.<br/>
         Le informazioni riguardanti i percorsi presenti sono state prese principalemente da altri siti come: <a style={{ color:'green' }} href='http://www.trekkingumbria.it/'>trekkingumbria</a>
         - <a href='http://www.parks.it/' style={{ color:'green' }}>parks</a> -
-        <a style={{ color:'green' }} href='https://www.lagotrasimeno.net/'>lagotrasimeno</a> - <a style={{ color:'green' }} href='https://www.montagneaperte.it/'>montagneaperte</a>.<br/>
+        <a style={{ color:'green' }} href='https://www.lagotrasimeno.net/'>lagotrasimeno</a>.<br/>
         Lo stato dei percorsi e la loro attuale presenza è basata sulle fonti sopra citate, per questo non mi assumo nessuna responsabilità
         riguardante la percorribilità e la precisione delle indicazioni.<br/> Utilizzo anche io questa applicazione per effettuare escusioni e fino ad ora
         non ho incontrato difficoltà nel percorrere i sentieri.<br/>

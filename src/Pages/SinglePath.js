@@ -130,7 +130,7 @@ const SinglePath = () => {
           <Col style={divAlignStyle} md="auto" xs={2} ><FiMap /></Col><Col md="auto" xs={8}>{specificPath.park_name}</Col>
         </Row>
         <Row style={divAlignStyle}>
-          <Col style={divAlignStyle} md="auto" xs={2} ><BsPinMap/></Col><Col md="auto" xs={8}><a href={'https://maps.google.com?q='+specificPath.starting_point}>{specificPath.starting_point}</a></Col>
+          <Col style={divAlignStyle} md="auto" xs={2} ><BsPinMap/></Col><Col md="auto" xs={8}><a style={{ color:'green' }} href={'https://maps.google.com?q='+specificPath.starting_point}>{specificPath.starting_point}</a></Col>
         </Row>
         <Row style={divAlignStyle}>
           <Col style={divAlignStyle} md="auto" xs={2} ><GiPathDistance /></Col><Col md="auto" xs={8}>{specificPath.path_length} Km</Col>
